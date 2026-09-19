@@ -1,0 +1,37 @@
+def chunked_file_reader(file_path, chunk_size_bytes):
+    """
+    Lazily read a text file in chunks and yield complete lines.
+
+    Args:
+        file_path (str): Path to the text file.
+        chunk_size_bytes (int): Size of each read chunk in bytes.
+
+    Yields:
+        str: One complete line at a time.
+    """
+    with open(file_path, "r", encoding="utf-8") as file:
+        buffer = ""
+
+        while True:
+            chunk = file.read(chunk_size_bytes)
+
+            # End of file
+            if not chunk:
+                break
+
+            # Attach any leftover partial line
+            buffer += chunk
+
+            # Split into lines
+            lines = buffer.split("\n")
+
+            # Last element may be an incomplete line
+            buffer = lines.pop()
+
+            # Yield complete lines
+            for line in lines:
+                yield line
+
+        # Yield any remaining data as the last line
+        if buffer:
+            yield buffer
