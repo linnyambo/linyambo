@@ -1,0 +1,42 @@
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def get_description(self):
+        """Return a formatted description of the car."""
+        return f"{self.year} {self.make} {self.model}"
+
+
+class ElectricCar(Car):
+    def __init__(self, make, model, year, battery_size):
+        # Call the parent class constructor
+        super().__init__(make, model, year)
+
+        # Additional attribute for electric cars
+        self.battery_size = battery_size
+
+    def get_description(self):
+        """Override the parent method to include battery information."""
+        return (
+            f"{self.year} {self.make} {self.model} "
+            f"with a {self.battery_size} kWh battery"
+        )
+
+    def battery_details(self):
+        """Return detailed battery information."""
+        return (
+            f"Battery Size: {self.battery_size} kWh\n"
+            f"Features: Fast charging support, regenerative braking, "
+            f"and long-range energy storage."
+        )
+
+
+# Example Usage
+car = Car("Toyota", "Corolla", 2022)
+print(car.get_description())
+
+electric_car = ElectricCar("Tesla", "Model 3", 2024, 75)
+print(electric_car.get_description())
+print(electric_car.battery_details())
