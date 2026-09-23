@@ -1,0 +1,54 @@
+import requests
+
+# GET request (for comparison)
+response = requests.get(
+    "https://jsonplaceholder.typicode.com/posts",
+    params={"userId": 1},     # becomes ?userId=1 in the URL
+    timeout=10,
+)
+print(response.status_code)   # 200
+print(len(response.json()))
+
+# POST request sending JSON data
+url = "https://jsonplaceholder.typicode.com/posts"
+
+payload = {
+    "title": "Term 3 Notice",
+    "body": "School fees are due on Friday.",
+    "userId": 1,
+}
+headers = {"Accept": "application/json"}
+
+try:
+    # json= serialises the dictionary and sets Content-Type: application/json
+    response = requests.post(url, json=payload, headers=headers, timeout=10)
+    response.raise_for_status()   # raises an error for 4xx / 5xx responses
+
+    print("Status code:", response.status_code)   # 201 Created
+    print("Response   :", response.json())
+#:  GET is used when you want to retrieve data from an API, and POST when you need to send data to the server, such as creating a new user submitting a form, or uploading information.
+#GET	
+Used to retrieve data from a server.	
+Data is sent in the URL as query parameters.	
+Parameters are visible in the URL.
+Generally used for reading information.	
+Can be cached and bookmarked.
+#POST
+Used to send data to a server.
+Data is sent in the request body.
+Generally used for creating or updating information.
+Data is not visible in the URL.
+Cannot be bookmarked in the same way because data is in the body.
+ 
+
+except requests.exceptions.HTTPError as err:
+    print("The server returned an error:", err)
+except requests.exceptions.RequestException as err:
+    print("The request failed:", err)
+
+# POST request sending form-encoded data
+response = requests.post(
+    "https://example.com/login",
+    data={"username": "linda", "password": "secret"},
+    timeout=10,
+)
