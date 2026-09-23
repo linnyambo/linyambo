@@ -1,0 +1,14 @@
+#question 1
+#:  GET is used when you want to retrieve data from an API, and POST when you need to send data to the server, such as creating a new user,submitting a form, or uploading information.
+#GET	
+Used to retrieve data from a server.	
+Data is sent in the URL as query parameters.	
+Parameters are visible in the URL.
+Generally used for reading information.	
+Can be cached and bookmarked.
+#POST
+Used to send data to a server.
+Data is sent in the request body.
+Generally used for creating or updating information.
+	Data is not visible in the URL.
+	Cannot be bookmarked in the same way because data is in the body.
