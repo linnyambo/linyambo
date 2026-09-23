@@ -1,0 +1,8 @@
+#The SQLite database engine is built into Python through the sqlite3 module. To interact with a SQLite database, three important steps are commonly involved:
+1.	Connecting to the database using sqlite3.connect()
+2.	Creating and using a cursor object
+3.	Saving changes with the commit() method
+•	sqlite3.connect(): Opens or creates a SQLite database and returns a connection object.
+•	Cursor Object (cursor()): Executes SQL commands and retrieves results from the database.
+•	commit(): Saves all database changes permanently.
+•	close(): Closes the database connection and releases resources.
