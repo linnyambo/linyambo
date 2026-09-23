@@ -1,0 +1,6 @@
+numbers = [num for num in range(1, 51) if num % 2 != 0 and num % 3 == 0]
+ 
+print(numbers)
+#A list comprehension provides a concise and readable way to create lists in Python. It allows you to generate a new list by applying an expression to each item in an iterable, optionally filtering items based on a condition.
+Instead of writing multiple lines with a for loop, a list comprehension can often accomplish the same task in a single line.
+
